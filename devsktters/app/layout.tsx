@@ -6,8 +6,8 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
     <html>
       <head />
-      <body className='bg-gray-100 flex'>
-        <div className='flex justify-between items-center fixed w-full bg-orange-500 p-2'>
+      <body className='bg-gray-100 flex w-full h-screen'>
+        {/* <div className='flex justify-between items-center fixed w-full bg-orange-500 p-2'>
           <Header/>
           <div>
             <Navbar/>
@@ -22,12 +22,15 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
                 <li><a href="/contact">🐥Contact</a></li>
             </ul>
            
-            {children}
+            
               
       
         </div>
-    
-        
+     */}
+     <div className='w-full h-screen'>
+        {children}
+
+     </div>
       </body>
     </html>
   )
