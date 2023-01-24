@@ -1,10 +1,15 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
+import React from 'react'
+import CardPost from './components/CardPost';
 
-export default function Home() {
-  return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+
+
+function App() {
+  
+  return (<div>
+    <CardPost/>
+    </div>
   )
 }
+
+export default App
