@@ -5,7 +5,7 @@ function Header() {
 
   return (
     <header>
-        <h2>Logo</h2>
+        <img src='/assets/logodev.png' className='h-7'/>
     </header>
   )
 }
