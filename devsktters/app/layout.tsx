@@ -1,8 +1,8 @@
 import '../app/global.css'
 import Navbar from './components/HamburguerMenu'
 import Header from './components/Header'
-import LogInButton from './Login/component/LogInButton'
-import LogOutButton from './Login/component/LogOutButton'
+import LogInButton from './login/component/LogInButton'
+import LogOutButton from './login/component/LogOutButton'
 
 export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (

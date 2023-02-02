@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 import React from 'react'
-import CardPost from './Posts/component/CardPost';
+import CardPost from './components/CardPost';
 // import CardPost from './Posts/component/CardPost';
 // import Login from './Login/page';
 
@@ -10,7 +11,9 @@ function App() {
   
   return (<div>
     {/* <Login/> */}
-      <CardPost/>
+
+    <Link href="/posts"><CardPost/></Link>
+      
     </div>
   )
 }
