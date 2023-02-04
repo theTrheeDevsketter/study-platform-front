@@ -1,14 +1,20 @@
 import '../app/global.css'
+import SidebarMenu from './components/SidebarMenu'
 import Navbar from './components/HamburguerMenu'
 import Header from './components/Header'
+import { AuthProvider } from './context/auth/auth.provider'
 import LogInButton from './login/component/LogInButton'
 import LogOutButton from './login/component/LogOutButton'
 
 export default function RootLayout({children,}: {children: React.ReactNode}) {
+
   return (
     <html>
       <head />
       <body className='bg-gray-100 flex w-full h-screen'>
+        <AuthProvider>
+        <>
+
         <div className='flex items-center fixed w-full h-12 bg-gradient-to-br from-orange-400 p-2'>
           <div className='m-auto flex justify-between items-center w-[90%] lg:grid-cols-[20%_auto]  lg:max-w-6xl '>
             <Header/>
@@ -20,17 +26,12 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
           </div>
         </div>
         
-        <div className='m-auto mt-[50px] w-[90%] h-[100vh] bg-white text-center leading-[40px] grid grid-cols-[auto] lg:grid-cols-[20%_auto]  lg:max-w-6xl border-solid border-[4px]'>
-            <ul className="DESKTOP-MENU hidden my-10 lg:flex flex-col">
-                <li><a href="/about">😎About</a></li>
-                <li><a href="/portfolio">🚀Portfolio</a></li>
-                <li><a href="/contact">🐥Contact</a></li>
-            </ul>
-           
-            
-              
+        <div className='m-auto mt-[50px] w-[90%] h-[100vh] bg-white text-center leading-[40px] grid grid-cols-[auto] lg:grid-cols-[20%_auto]  lg:max-w-6xl border-solid border-[4px] overflow-auto'>
+            <SidebarMenu/>
             {children}
         </div>
+        </>
+        </AuthProvider>
       </body>
     </html>
   )
