@@ -1,14 +1,19 @@
 import '../app/global.css'
 import Navbar from './components/HamburguerMenu'
 import Header from './components/Header'
+import { AuthProvider } from './context/auth/auth.provider'
 import LogInButton from './Login/component/LogInButton'
 import LogOutButton from './Login/component/LogOutButton'
 
 export default function RootLayout({children,}: {children: React.ReactNode}) {
+
   return (
     <html>
       <head />
       <body className='bg-gray-100 flex w-full h-screen'>
+        <AuthProvider>
+        <>
+
         <div className='flex items-center fixed w-full h-12 bg-gradient-to-br from-orange-400 p-2'>
           <div className='m-auto flex justify-between items-center w-[90%] lg:grid-cols-[20%_auto]  lg:max-w-6xl '>
             <Header/>
@@ -28,9 +33,13 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
             </ul>
            
             
-              
-            {children}
+            
+            
+              {children}
+            
         </div>
+        </>
+        </AuthProvider>
       </body>
     </html>
   )
