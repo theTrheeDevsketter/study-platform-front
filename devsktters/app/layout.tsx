@@ -1,4 +1,5 @@
 import '../app/global.css'
+import SidebarMenu from './components/SidebarMenu'
 import Navbar from './components/HamburguerMenu'
 import Header from './components/Header'
 import LogInButton from './login/component/LogInButton'
@@ -21,14 +22,7 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
         </div>
         
         <div className='m-auto mt-[50px] w-[90%] h-[100vh] bg-white text-center leading-[40px] grid grid-cols-[auto] lg:grid-cols-[20%_auto]  lg:max-w-6xl border-solid border-[4px]'>
-            <ul className="DESKTOP-MENU hidden my-10 lg:flex flex-col">
-                <li><a href="/about">😎About</a></li>
-                <li><a href="/portfolio">🚀Portfolio</a></li>
-                <li><a href="/contact">🐥Contact</a></li>
-            </ul>
-           
-            
-              
+            <SidebarMenu/>
             {children}
         </div>
       </body>
