@@ -43,7 +43,7 @@ const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
                         <a href="/about">About</a>
                     </li>
                     <li className="border-b border-gray-400 my-8 uppercase">
-                        <a href="/portfolio">Portfolio</a>
+                        <a href="/tags">Tags</a>
                     </li>
                     <li className="border-b border-gray-400 my-8 uppercase">
                         <a href="/contact">Contact</a>
