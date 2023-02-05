@@ -1,5 +1,7 @@
 'use client'
 import React, { useState } from 'react'
+import { menuItems } from './menuItems';
+import MenuListHamburguer from './MenuListHamburguer';
 
 
 
@@ -38,17 +40,7 @@ const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                     </div>
-                    <ul className="flex flex-col items-center justify-between min-h-[250px]">
-                    <li className="border-b border-gray-400 my-8 uppercase">
-                        <a href="/about">About</a>
-                    </li>
-                    <li className="border-b border-gray-400 my-8 uppercase">
-                        <a href="/contact">Contact</a>
-                    </li>
-                    <li className="border-b border-gray-400 my-8 uppercase">
-                        <a href="/help">Help</a>
-                    </li>
-                    </ul>
+                    <MenuListHamburguer items={menuItems}/>
                 </div>
             </section>
            

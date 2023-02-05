@@ -2,7 +2,7 @@ import React from 'react'
 
 function Help() {
   return (
-    <div>Help</div>
+    <h1 className='text-4xl mt-16 text-indigo-500'>Help</h1>
   )
 }
 
