@@ -10,12 +10,14 @@ const CreateEdit = dynamic(() => import('./component/CreateEdit'),
   ssr: false
 })
 
+import SunEditorComponent from './component/SunEditor';
+
 interface Props {}
 
 const PostDetail: NextPage<Props> = (props): JSX.Element =>  {
   return (
     
-      <CreateEdit/>
+      <SunEditorComponent/>
     
   )
 }

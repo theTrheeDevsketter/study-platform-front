@@ -1,32 +1,88 @@
 import dynamic from 'next/dynamic'
-import React, { useState } from 'react'
-// import { Editor, EditorState,EditorProps } from 'react-draft-wysiwyg';
-import { EditorState  } from 'draft-js';
-import 'draft-js/dist/Draft.css'
-import Editor from '@draft-js-plugins/editor';
-import createToolbarPlugin from '@draft-js-plugins/static-toolbar';
-import '@draft-js-plugins/static-toolbar/lib/plugin.css';
-// const Editor = dynamic(
-//   () => import('react-draft-wysiwyg').then((mod) => mod.Editor),
-//   {ssr: false}
+import React, { useState, forwardRef } from 'react'
+import {Quill} from 'react-quill';
+const ReactQuill = dynamic(
+  async () => {
+    const {default: RQ } = await import('react-quill');
+
+    return ({forwardedRef, ...props}: any) => <RQ ref={forwardedRef} {...props} />;
+  },
+  {ssr: false}
+);
+
+// const ReactQuill = dynamic(() => import("react-quill"), {ssr: false});
+import 'react-quill/dist/quill.snow.css';
+// import quillModules from './quillModules';
+
+
+// const ForwardRefReactQuill = forwardRef((props, ref) =>
+//   <ReactQuill {...props} ref={ref}/>
 // )
 
 function CreateEditPost() {
 
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const quillRef = React.useRef();
 
-  const toolbarPlugin = createToolbarPlugin();
+  const [htmlValue,setHtmlValue] = useState('');
 
-  const handleChange = (state: EditorState) => {
-    setEditorState(state)
+  
+
+  const onChange = (text: string) => setHtmlValue(text);
+
+  const imageHandler = () => {
+
+    
+    
+    const quill = quillRef.current;
+
+    console.log(quill);
+    
   }
 
+  const quillModules = {
+
+    toolbar: {container: [
+        [{ header: '1' }, { header: '2' }, { font: [] }],
+        [{ size: [] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [
+          { list: 'ordered' },
+          { list: 'bullet' },
+          { indent: '-1' },
+          { indent: '+1' },
+        ],
+        ['link', 'image', 'video'],
+        ['code'],
+        ['clean'],
+      ],
+      handlers: {
+        'image': imageHandler
+      }
+    },
+      clipboard: {
+        // toggle to add extra line breaks when pasting HTML:
+        matchVisual: false,
+      },
+}
+
+
+
   return (
-      <Editor
-      editorState={editorState}
-      onChange={handleChange}
-      plugins={[toolbarPlugin]}
-      ></Editor>
+    <>
+    <ReactQuill 
+        forwardedRef={quillRef}
+        theme='snow' 
+        onChange={onChange} 
+        modules={quillModules}
+        bounds='quill-container'
+      ></ReactQuill>
+
+      <br></br>
+      <br></br>
+      <br></br>
+      <div>{htmlValue}</div>
+    </>
+
   )
 }
 

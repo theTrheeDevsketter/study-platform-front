@@ -19,13 +19,10 @@ function App() {
 
   if(!initialRenderComplete){
     return (<div>loading...</div>)
-
   }else{
   
   return (<div>
     {/* <Login/> */}
-
-
 
     <Link href="/posts"><CardPost/></Link>
       
