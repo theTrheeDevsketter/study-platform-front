@@ -14,7 +14,7 @@ export interface listItems{
 function MenuList({items}:listItems) {
     
   return (
-        <ul className="DESKTOP-MENU hidden my-10 p-5 lg:flex flex-col">
+        <ul className="DESKTOP-MENU hidden mt-[50px] px-5 lg:flex flex-col">
           {
               items.map(({url,icon,title}) => 
                 <li key={url}>
