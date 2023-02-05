@@ -7,7 +7,7 @@ function Contact() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    window.open(`mailto:${email}`, "_blank");
+    window.open(`mailto:thethreedevsketters@gmail.com`, "_blank");
   };
 
   return (
