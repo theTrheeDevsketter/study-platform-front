@@ -12,8 +12,8 @@ export const menuItems: listItem[] = [
         icon: '☎️'
     },
     {
-        url:'/help',
-        title:'Help',
+        url:'/faq',
+        title:'FAQ',
         icon: '❓'
     },
     {
