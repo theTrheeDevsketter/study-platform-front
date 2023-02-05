@@ -14,14 +14,14 @@ export interface listItems{
 function MenuList({items}:listItems) {
     
   return (
-        <ul className="DESKTOP-MENU hidden my-10 lg:flex flex-col">
+        <ul className="DESKTOP-MENU hidden my-10 p-5 lg:flex flex-col">
           {
               items.map(({url,icon,title}) => 
                 <li key={url}>
                   <a href={url}>
-                    <div className='flex justify-items-center'>
-                      <div className='flex-none w-[10%] mx-5'>{icon}</div>
-                      <div className='w-[90%] flex flex-end'>{title}</div>
+                    <div className='flex w-full'>
+                      <div className='flex-none flex-end w-[30%] ml-5'>{icon}</div>
+                      <div className='w-[70%] flex flex-end '>{title}</div>
                     </div>
                   </a>
                 </li>

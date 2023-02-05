@@ -7,12 +7,12 @@ function Contact() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    window.open(`mailto:${email}`, "_blank");
+    window.open(`mailto:thethreedevsketters@gmail.com`, "_blank");
   };
 
   return (
     <>
-      <h1 className='text-4xl mt-10 text-indigo-500'>Contact</h1>
+      <h1 className='text-4xl mt-16 text-indigo-500'>Contact</h1>
       <div className="w-full md:w-96 md:max-w-full mx-auto mt-5">
         <div className="p-6 border border-gray-300 sm:rounded-md">
 

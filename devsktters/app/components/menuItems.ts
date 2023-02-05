@@ -16,4 +16,9 @@ export const menuItems: listItem[] = [
         title:'Help',
         icon: '❓'
     },
+    {
+        url:'/tags',
+        title:'Tags',
+        icon: '🔎'
+    },
 ]
