@@ -1,20 +1,18 @@
 import React from 'react'
 
-export interface listItem{
-        url:string,
-        icon:string,
-        title:string
+export interface socialItem{
+    url : '',
+    title:string,
+    icon:string,
 };
 
 export interface listItems{
-    items: listItem[]
+items: socialItem[]
 }
 
-
-function MenuList({items}:listItems) {
-    
+function SocialMedia({items}:listItems) {
   return (
-        <ul className="DESKTOP-MENU hidden mt-[50px] px-5 lg:flex flex-col">
+    <ul className="DESKTOP-MENU hidden p-5 lg:flex flex-col">
           {
               items.map(({url,icon,title}) => 
                 <li key={url}>
@@ -28,7 +26,7 @@ function MenuList({items}:listItems) {
               )
           }
         </ul>
-  ) 
+  )
 }
 
-export default MenuList
+export default SocialMedia

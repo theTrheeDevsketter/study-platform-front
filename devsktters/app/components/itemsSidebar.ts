@@ -1,4 +1,6 @@
 import { listItem } from "./MenuList";
+import { socialItem } from "./SocialMedia";
+import { tagItem } from "./TagList";
 
 export const menuItems: listItem[] = [
     {
@@ -16,9 +18,26 @@ export const menuItems: listItem[] = [
         title:'FAQ',
         icon: '❓'
     },
+]
+
+export const tagsItems: tagItem[] = [
     {
-        url:'/tags',
         title:'Tags',
         icon: '🔎'
     },
 ]
+
+export const socialItems: socialItem[] = [
+    {
+        url:'',
+        title:'Twitter',
+        icon: '🔎'
+    },
+    {
+        url:'',
+        title:'Facebook',
+        icon: '🔎'
+    },
+]
+
+
