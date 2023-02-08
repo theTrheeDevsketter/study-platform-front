@@ -6,23 +6,49 @@ import config from "./sunEditorConf";
 
 const SunEditor = dynamic(() => import("suneditor-react"), {ssr: false});
 
-// const CodeMirror = dynamic(() => import("codemirror"), {ssr: false});
+// const plugins = dynamic(() => import("suneditor/src/plugins/"), {ssr:false})
+
+// const CodeMirror = dynamic(() => import("@codemirror/language"), {ssr: false});
 
 import CodeMirror from "codemirror";
+import { useEffect, useRef } from "react";
+
+import '@codemirror/language';
+import '@codemirror/lang-javascript';
 
 
-const SunEditorComponent = () => {
+const SunEditorComponent = ({placeholder, value, onchange, isloaded} : any) => {
 
+    const sunEditorRef = useRef();
+
+    useEffect(() => {
+
+
+
+    }, [])
+
+    const onChange = (data: any) => {
+
+        console.log(data);
+
+    }
+
+    
 
     return(
  
         <div>
+            {isloaded 
+            ?
             <SunEditor
+            setAllPlugins={true}
+            defaultValue={value}
+            placeholder={placeholder}
+            onChange={onChange}
             lang={"es"}
                 setOptions={{
                     "mode": "classic",
                     "rtl": false,
-                    "katex": "window.katex",
                     "width": "auto",
                     "height": "auto",
                     "charCounter": true,
@@ -42,9 +68,13 @@ const SunEditorComponent = () => {
                     "formats": [
                         "p",
                         "blockquote",
+                        "pre",
                         "h1",
                         "h2",
-                        "h3"
+                        "h3",
+                        "h4",
+                        "h5",
+                        "h6"
                     ],
                     
                     "imageFileInput": false,
@@ -106,11 +136,8 @@ const SunEditorComponent = () => {
                             "image",
                             "video",
                             "audio",
-                            "math",
-                            "imageGallery",
                             "fullScreen",
                             "showBlocks",
-                            "codeView",
                             "preview",
                             "print",
                             "save",
@@ -123,6 +150,9 @@ const SunEditorComponent = () => {
                 
 
             />
+            : <div>loading</div>
+            }
+            
         </div>
         
     )
