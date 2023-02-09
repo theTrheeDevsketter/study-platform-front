@@ -32,13 +32,18 @@ export default function PostDetail() {
 
 
   return (
-    <div>
-      <SunEditorComponent
-        placeholder="" 
-        value="" 
-        onchange={onchange} 
-        isloaded={isloaded}
-      />
+    
+    <div className="flex bg-white shadow-lg rounded-lg mx-auto mt-[50px] max-w-sm md:max-w-4xl">
+     
+          <SunEditorComponent
+            placeholder="" 
+            value="" 
+            onchange={onchange} 
+            isloaded={isloaded}
+          />
+
+    
     </div>
+   
   )
 }

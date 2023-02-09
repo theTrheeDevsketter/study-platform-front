@@ -37,7 +37,7 @@ const SunEditorComponent = ({placeholder, value, onchange, isloaded} : any) => {
 
     return(
  
-        <div>
+        <>
             {isloaded 
             ?
             <SunEditor
@@ -153,7 +153,7 @@ const SunEditorComponent = ({placeholder, value, onchange, isloaded} : any) => {
             : <div>loading</div>
             }
             
-        </div>
+        </>
         
     )
 
