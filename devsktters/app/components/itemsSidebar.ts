@@ -22,9 +22,42 @@ export const menuItems: listItem[] = [
 
 export const tagsItems: tagItem[] = [
     {
-        title:'Tags',
-        icon: '🔎'
+        title:'html',
+        icon: '🐲'
     },
+    {
+        title:'css',
+        icon: '🎨'
+    },
+    {
+        title:'javascript',
+        icon: '⚙️'
+    },
+    {
+        title:'html',
+        icon: '🐲'
+    },
+    {
+        title:'css',
+        icon: '🎨'
+    },
+    {
+        title:'javascript',
+        icon: '⚙️'
+    },
+    {
+        title:'html',
+        icon: '🐲'
+    },
+    {
+        title:'css',
+        icon: '🎨'
+    },
+    {
+        title:'javascript',
+        icon: '⚙️'
+    },
+    
 ]
 
 export const socialItems: socialItem[] = [
