@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import { menuItems } from './menuItems';
+import { menuItems } from './itemsSidebar';
 import MenuListHamburguer from './MenuListHamburguer';
 
 

@@ -11,7 +11,7 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
     <html>
       <head />
-      <body className='bg-gray-100 flex w-full h-screen'>
+      <body className='bg-slate-50 flex w-full h-screen'>
         <AuthProvider>
         <>
 
@@ -26,7 +26,7 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
           </div>
         </div>
         
-        <div className='m-auto w-[90%] h-[100vh] bg-white text-center leading-[40px] grid grid-cols-[auto] lg:grid-cols-[20%_auto]  lg:max-w-6xl border-solid border-[4px] overflow-auto'>
+        <div className='m-auto w-[90%] h-[100vh] bg-white text-center leading-[40px] grid grid-cols-[0%_auto] lg:grid-cols-[20%_auto]  lg:max-w-6xl overflow-auto'>
             <SidebarMenu/>
             {children}
         </div>
