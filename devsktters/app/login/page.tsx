@@ -1,5 +1,6 @@
 'use client';
 import React from 'react'
+import axios from 'axios';
 
 function Login() {
 
@@ -10,16 +11,25 @@ function Login() {
     }
 
     const fetchData = () =>{
-        try {
-            fetch('http://localhost:8080/auth/github', {
-                method:'GET',
-                redirect:'follow'
-            })
-            .then(response => console.log(response)  )
 
-        } catch (e){
-            console.error(e)
-        }
+   
+        axios.get('http://localhost:8080/auth/github',{
+            
+        })
+        .then(e => console.log(e))
+        .catch(error=> console.error(error))
+
+        // try {
+        //     fetch('http://localhost:8080/auth/github', {
+        //         method:'GET',
+        //         redirect:'follow',
+                
+        //     })
+        //     .then(response => console.log(response)  )
+
+        // } catch (e){
+        //     console.error(e)
+        // }
     }
 
     return (
