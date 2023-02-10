@@ -1,9 +1,24 @@
 "use client"
-import React, { useState } from 'react'
+import { useUser } from '@auth0/nextjs-auth0/client';
+import React, { useEffect, useState } from 'react'
 
 function Contact() {
 
   const [email, setEmail] = useState<string>("");
+  const { user } = useUser()
+
+  interface Formvalues {
+    name : string | null | undefined
+  }
+
+  const [formValues ,setFormValues] = useState<Formvalues>()
+  useEffect(()=>{
+    if (user) {
+      setFormValues({
+        name:  user.nickname?.toString()
+      })
+    }}, [user])
+  
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,6 +42,7 @@ function Contact() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
                 placeholder="Maricarme Bloggs"
+                defaultValue={formValues?.name ?? ''}
               />
             </label>
             <label className="block mb-6">
