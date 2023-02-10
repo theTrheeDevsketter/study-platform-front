@@ -12,6 +12,7 @@ items: tagItem[]
 function TagList({items}:listItems) {
   return (
     <ul className="DESKTOP-MENU hidden h-[60%] my-2 px-5 bg-slate-100 shadow-md lg:flex flex-col">
+      <span className='font-bold'>#Tags</span>
           {
               items.map(({icon,title}) => 
                 <li key={title}>

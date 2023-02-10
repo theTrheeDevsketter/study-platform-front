@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import CardPost from './components/CardPost';
+import { card } from './components/ItemsCard';
 // import CardPost from './Posts/component/CardPost';
 // import Login from './Login/page';
 
@@ -24,7 +25,7 @@ function App() {
   return (<div>
     {/* <Login/> */}
 
-    <Link href="/posts"><CardPost/></Link>
+    <CardPost items={card}/>
       
     </div>
   )
