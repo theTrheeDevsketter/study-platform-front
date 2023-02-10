@@ -11,7 +11,8 @@ items: listItem[]
 
 function MenuListHamburguer({items}:listItems) {
   return (
-        <ul className="flex flex-col items-center justify-between min-h-[250px]">
+    
+        <ul className="flex flex-col items-center justify-between min-h-[250px] ">
             {
                 items.map(({url,title}) =>
                     <li key={url} className="border-b border-gray-400 my-8 uppercase">
