@@ -2,10 +2,11 @@
 
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
-import LogInButton from "../login/component/LogInButton";
-import LogOutButton from "../login/component/LogOutButton";
+
 import Navbar from "./HamburguerMenu";
 import Header from "./Header";
+import LogInButton from "./LogInButton";
+import LogOutButton from "./LogOutButton";
 import SidebarMenu from "./SidebarMenu";
 
 export default function LayoutFrame ({children,}: {children: React.ReactNode}){

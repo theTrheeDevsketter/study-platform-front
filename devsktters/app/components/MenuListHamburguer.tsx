@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 export interface listItem{
     url:string,
@@ -14,9 +15,9 @@ function MenuListHamburguer({items}:listItems) {
     
         <ul className="flex flex-col items-center justify-between min-h-[250px] ">
             {
-                items.map(({url,title}) =>
-                    <li key={url} className="border-b border-gray-400 my-8 uppercase">
-                        <a href={url}>{title}</a>
+                items.map(({url,title},i) =>
+                    <li key={url+i} className="border-b border-gray-400 my-8 uppercase">
+                        <Link href={url}>{title}</Link>
                     </li>
                 )
             }
