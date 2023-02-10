@@ -2,9 +2,9 @@ import '../app/global.css'
 import SidebarMenu from './components/SidebarMenu'
 import Navbar from './components/HamburguerMenu'
 import Header from './components/Header'
-import { AuthProvider } from './context/auth/auth.provider'
 import LogInButton from './login/component/LogInButton'
 import LogOutButton from './login/component/LogOutButton'
+import { UserProvider } from '@auth0/nextjs-auth0/client'
 
 export default function RootLayout({children,}: {children: React.ReactNode}) {
 
@@ -12,7 +12,8 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
     <html>
       <head />
       <body className='bg-slate-50 flex w-full h-screen'>
-        <AuthProvider>
+      
+        <UserProvider>
         <>
 
         <div className='flex items-center fixed w-full h-12 bg-indigo-500 p-2'>
@@ -26,12 +27,12 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
           </div>
         </div>
         
+        <SidebarMenu/>
         <div className='m-auto w-[90%] h-[100vh] bg-white text-center leading-[40px] grid grid-cols-[0%_auto] lg:grid-cols-[20%_auto]  lg:max-w-6xl overflow-auto'>
-            <SidebarMenu/>
             {children}
         </div>
         </>
-        </AuthProvider>
+        </UserProvider>
       </body>
     </html>
   )
