@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 export interface cardItem{
@@ -20,7 +21,7 @@ function CardPost({items}:listCardItems) {
    <>
       {
       items.map(({imageAvatar,userName,timePost,affiliatedTime,postDescription,likes,request},i) =>
-      
+      <Link key={userName+i} href={'/posts/detail'}>
          <div key={userName+i} className="flex bg-white shadow-lg rounded-lg mx-auto my-10 max-w-sm md:max-w-2xl ">
             <div className="flex items-start px-4 py-6 w-[100%]">
                <img className="w-12 h-12 rounded-full object-cover mr-4 shadow" src= {imageAvatar} alt="avatar"/>
@@ -56,6 +57,7 @@ function CardPost({items}:listCardItems) {
                </div>
             </div>
          </div>
+      </Link>
       
       )
       }
