@@ -14,8 +14,8 @@ function TagList({items}:listItems) {
     <ul className="DESKTOP-MENU hidden h-[60%] my-2 px-5 bg-slate-100 shadow-md lg:flex flex-col">
       <span className='font-bold'>#Tags</span>
           {
-              items.map(({icon,title}) => 
-                <li key={title}>
+              items.map(({icon,title},i) => 
+                <li key={title+i}>
                     <div className='flex w-full'>
                       <div className='flex-none flex-end w-[30%] ml-5'>{icon}</div>
                       <div className='w-[70%] flex flex-end '>{title}</div>
