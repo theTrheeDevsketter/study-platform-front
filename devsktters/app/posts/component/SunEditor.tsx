@@ -29,7 +29,6 @@ const SunEditorComponent = ({placeholder, value, onchange, isloaded} : any) => {
 
     const onChange = (data: any) => {
 
-        console.log(data);
 
     }
 

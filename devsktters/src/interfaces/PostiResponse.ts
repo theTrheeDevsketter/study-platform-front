@@ -7,7 +7,10 @@ export interface Posti {
     id:          String,
     title:       String,
     content:     String,
-    tags:        String[],
+    tags:        string[],
     author:      String,
-    isPosted:    Boolean
+    isPosted:    Boolean,
+    avatarImg:   string,
+    date:        string,
+    likes:       number
 }

@@ -35,7 +35,6 @@ function CreateEditPost() {
     
     const quill = quillRef.current;
 
-    console.log(quill);
     
   }
 
