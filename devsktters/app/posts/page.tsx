@@ -19,7 +19,6 @@ import SunEditorComponent from './component/SunEditor';
 export default function PostDetail() {
 
   const onChange = (data: any) => {
-    console.log(data);
   }
 
 
@@ -38,7 +37,7 @@ export default function PostDetail() {
           <SunEditorComponent
             placeholder="" 
             value="" 
-            onchange={onchange} 
+            onchange={onChange} 
             isloaded={isloaded}
           />
 
