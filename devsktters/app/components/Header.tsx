@@ -6,8 +6,7 @@ function Header() {
 
   return (
     <header>
-      <Link href="/"><img src='/assets/logodev.png' className='h-7'/></Link>
-        
+      <Link href="/"><img src='/assets/logodev.png' className='h-7'/></Link> 
     </header>
   )
 }

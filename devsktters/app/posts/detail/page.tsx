@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { Posti } from '../../../src/interfaces/PostiResponse'
 
@@ -102,7 +103,12 @@ export default function PostDetail({postisDetail}:Props) {
           </div>
           <br />
         </main>
-        <button className="rounded-full border-cyan-600 border-2 z-50">Save Changes</button>
+        <button className="group relative h-12 w-48 overflow-hidden rounded-lg bg-white text-lg shadow">
+          <Link href=''>
+            <div className="absolute inset-0 w-3 bg-indigo-400 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+            <span className="relative text-black group-hover:text-white">Volver  😎</span>
+          </Link>
+        </button>
       </div>
   )
 }

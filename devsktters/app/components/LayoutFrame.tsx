@@ -16,7 +16,8 @@ export default function LayoutFrame ({children,}: {children: React.ReactNode}){
     return(
     <>
 
-    <div className='m-auto flex justify-between items-center w-[90%] h-[5%] bg-indigo-500 p-2'>
+    <div className='m-auto flex justify-between items-center w-[100%] h-[5%] bg-indigo-500 p-2'>
+            <div className="flex w-[90%] justify-between m-auto">
               <Header/>
               <div className='w-[60%] flex justify-end items-center'>
                   {
@@ -30,6 +31,7 @@ export default function LayoutFrame ({children,}: {children: React.ReactNode}){
                 
                 <div><Navbar/></div>
               </div>
+            </div>
           </div>
           <div className='m-auto relative bg-white text-center leading-[40px] w-[90%] h-[95%] grid grid-cols-[0%_auto] lg:grid-cols-[20%_auto] lg:max-w-6xl overflow-auto'>
               <div className='h-full'>
