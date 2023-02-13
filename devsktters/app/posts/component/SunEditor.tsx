@@ -6,10 +6,6 @@ import config from "./sunEditorConf";
 
 const SunEditor = dynamic(() => import("suneditor-react"), {ssr: false});
 
-// const plugins = dynamic(() => import("suneditor/src/plugins/"), {ssr:false})
-
-// const CodeMirror = dynamic(() => import("@codemirror/language"), {ssr: false});
-
 import CodeMirror from "codemirror";
 import { useEffect, useRef } from "react";
 
@@ -17,7 +13,7 @@ import '@codemirror/language';
 import '@codemirror/lang-javascript';
 
 
-const SunEditorComponent = ({placeholder, value, onchange, isloaded} : any) => {
+const SunEditorComponent = ({value, isloaded, setData} : any) => {
 
     const sunEditorRef = useRef();
 
@@ -27,22 +23,22 @@ const SunEditorComponent = ({placeholder, value, onchange, isloaded} : any) => {
 
     }, [])
 
-    const onChange = (data: any) => {
+    const onChange = (dataPost: any) => {
 
+        setData(dataPost)
 
     }
 
-    
 
     return(
  
         <>
             {isloaded 
             ?
+            <>
             <SunEditor
             setAllPlugins={true}
             defaultValue={value}
-            placeholder={placeholder}
             onChange={onChange}
             lang={"es"}
                 setOptions={{
@@ -149,6 +145,8 @@ const SunEditorComponent = ({placeholder, value, onchange, isloaded} : any) => {
                 
 
             />
+            
+            </>
             : <div>loading</div>
             }
             
