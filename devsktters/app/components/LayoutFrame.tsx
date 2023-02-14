@@ -3,8 +3,10 @@
 import { UserProfile, useUser } from "@auth0/nextjs-auth0/client";
 import { UserProps } from "@auth0/nextjs-auth0/dist/client/with-page-auth-required";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import useSWR from 'swr'
+import { UserResponse } from "../../src/interfaces";
+import { AuthContext } from "../context/auth";
 
 import Navbar from "./HamburguerMenu";
 import Header from "./Header";
@@ -15,6 +17,9 @@ import SidebarMenu from "./SidebarMenu";
 export default function LayoutFrame ({children,}: {children: React.ReactNode}){
 
   const {isLoading,user,error} = useUser()
+  const { setAuth } = useContext(AuthContext)
+
+  
   
   const fetcher = async (url:string) => {
     if (user) {
@@ -37,8 +42,10 @@ export default function LayoutFrame ({children,}: {children: React.ReactNode}){
 
       if (res.status === 201) {
         
-        const data = await res.json()
+        const data = await res.json() as UserResponse
         console.log(data);
+
+        setAuth(data)
         
       }
       
@@ -84,7 +91,6 @@ export default function LayoutFrame ({children,}: {children: React.ReactNode}){
                 <button className="z-90 absolute bottom-10 right-8 bg-indigo-500 w-20 h-20 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-indigo-700 hover:drop-shadow-2xl hover:animate-bounce duration-300"> + </button>
               </Link>
               }
-              <button className="z-90 absolute bottom-10 right-8 bg-indigo-500 w-20 h-20 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-indigo-700 hover:drop-shadow-2xl hover:animate-bounce duration-300"> + </button>
           </div>
 </>
     )
