@@ -20,6 +20,11 @@ const authReducer = (state : AuthState, action : authTypes):AuthState =>{
                 ...state,
                 bearer: action.payload
             }
+        case "Auth - LOAD":
+            return {
+                ...state,
+                info: action.payload
+            }
         default:
             return state
     }
