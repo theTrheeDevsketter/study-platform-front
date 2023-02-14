@@ -1,7 +1,12 @@
 'use client'
 
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { UserProfile, useUser } from "@auth0/nextjs-auth0/client";
+import { UserProps } from "@auth0/nextjs-auth0/dist/client/with-page-auth-required";
 import Link from "next/link";
+import { useContext, useEffect } from "react";
+import useSWR from 'swr'
+import { UserResponse } from "../../src/interfaces";
+import { AuthContext } from "../context/auth";
 
 import Navbar from "./HamburguerMenu";
 import Header from "./Header";
@@ -12,8 +17,47 @@ import SidebarMenu from "./SidebarMenu";
 export default function LayoutFrame ({children,}: {children: React.ReactNode}){
 
   const {isLoading,user,error} = useUser()
+  const { setAuth } = useContext(AuthContext)
 
-    return(
+  
+  
+  const fetcher = async (url:string) => {
+    if (user) {
+      
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      
+      const raw = JSON.stringify({
+        "userName": user?.nickname,
+        "avatar_url": user?.picture
+      });
+      
+      const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+      };
+      
+      const res = await fetch(url, requestOptions)
+
+      if (res.status === 201) {
+        
+        const data = await res.json() as UserResponse
+        console.log(data);
+
+        setAuth(data)
+        
+      }
+      
+
+
+    }
+    
+  }
+  const { data } = useSWR(()=> user && 'http://localhost:8080/users/', fetcher)
+
+  
+  return(
     <>
 
     <div className='m-auto flex justify-between items-center w-[100%] h-[5%] bg-indigo-500 p-2'>

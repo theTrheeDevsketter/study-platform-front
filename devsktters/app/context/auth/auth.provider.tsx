@@ -1,12 +1,14 @@
 'use client';
 
 import { useReducer } from 'react';
+import { UserResponse } from '../../../src/interfaces';
 import { AuthContext, AuthState, authReducer, Bearer } from './index'
 
 
 const INIT_AUTH_STATE : AuthState = {
     bearer: null,
-    isLogged: false
+    isLogged: false,
+    info: null
 }
 
 interface Props {
@@ -29,6 +31,7 @@ export function AuthProvider({children}:Props,){
 
     const logout = () => dispatch({type:'Auth - LOGOUT'})
 
+    const setAuth = ( userResponse : UserResponse ) => dispatch({type:'Auth - LOAD', payload: userResponse})
     
 
     return(
@@ -37,6 +40,7 @@ export function AuthProvider({children}:Props,){
             login,
             logout,
             setBearer,
+            setAuth
         }} >
             {children}
         </AuthContext.Provider>
