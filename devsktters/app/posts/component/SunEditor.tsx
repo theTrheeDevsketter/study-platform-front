@@ -2,13 +2,7 @@
 import dynamic from "next/dynamic";
 import 'suneditor/dist/css/suneditor.min.css';
 
-import config from "./sunEditorConf";
-
 const SunEditor = dynamic(() => import("suneditor-react"), {ssr: false});
-
-// const plugins = dynamic(() => import("suneditor/src/plugins/"), {ssr:false})
-
-// const CodeMirror = dynamic(() => import("@codemirror/language"), {ssr: false});
 
 import CodeMirror from "codemirror";
 import { useEffect, useRef } from "react";
@@ -17,32 +11,28 @@ import '@codemirror/language';
 import '@codemirror/lang-javascript';
 
 
-const SunEditorComponent = ({placeholder, value, onchange, isloaded} : any) => {
+const SunEditorComponent = ({value, isloaded, setData} : any) => {
 
     const sunEditorRef = useRef();
 
     useEffect(() => {
 
-
-
     }, [])
 
-    const onChange = (data: any) => {
+    const onChange = (dataPost: any) => {
 
+        setData(dataPost)
 
     }
 
-    
-
     return(
- 
         <>
             {isloaded 
             ?
+            <>
             <SunEditor
             setAllPlugins={true}
             defaultValue={value}
-            placeholder={placeholder}
             onChange={onChange}
             lang={"es"}
                 setOptions={{
@@ -75,7 +65,6 @@ const SunEditorComponent = ({placeholder, value, onchange, isloaded} : any) => {
                         "h5",
                         "h6"
                     ],
-                    
                     "imageFileInput": false,
                     "videoFileInput": false,
                     "audioUrlInput": false,
@@ -139,16 +128,13 @@ const SunEditorComponent = ({placeholder, value, onchange, isloaded} : any) => {
                             "showBlocks",
                             "preview",
                             "print",
-                            "save",
-                            "template"
                         ]
                     ],
                     "codeMirror": CodeMirror
                 }}
-
-                
-
             />
+            
+            </>
             : <div>loading</div>
             }
             

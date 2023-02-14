@@ -4,7 +4,7 @@ export interface ListPostis {
 }
 
 export interface Posti {
-    id:          String,
+    id?:         String,
     title:       String,
     content:     String,
     tags:        string[],
