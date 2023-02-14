@@ -1,78 +1,74 @@
 "use client";
-import React, { useEffect, useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 
 import SunEditorComponent from './component/SunEditor';
 
 import { Posti } from '../../src/interfaces/PostiResponse';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
+import axios from 'axios';
+import Saved from './component/Saved';
+import TagsDropdown from './component/TagsDropdown';
+import { throws } from 'assert';
+import { text } from 'stream/consumers';
+import { Tags, TagsArray } from '../../src/interfaces/Tags';
+
+
+
 export default function PostDetail() {
 
-  const [data, setData] = useState("");
+  const [content, setcontent] = useState("");
 
   const { isLoading, user, error } = useUser();
+
+  const [isloaded, setIsloaded] = useState(false);
+
+  const [isSaved, setIsSaved] = useState(false);
+
+  const [selectedTags, setSelectedTags] = useState<Tags[]>([])
+
+  const [title, setTitle] =  useState('');
+
+
 
   const save = () => {
 
     let date: Date = new Date();
 
+    const tagsNames: string[] = [];
+
+    selectedTags.forEach((item) => tagsNames.push(item.name))
+
+    // selectedTags.map((item) => {item.name})
+
     const post: Posti = {
-      author: user?.name as string,
-      title: "Post de prueba",
-      content: data,
-      tags: ["Etiqueta", "Etiqueta"],
+      author: user?.nickname as string,
+      title: title,
+      content: content,
+      tags: tagsNames ,
       isPosted: false,
       avatarImg: user?.picture as string,
       date: date.toLocaleString(),
       likes: 0
     };
 
-    savePost(post);
-  }
-
-  async function savePost(post: Posti) {
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify(post);
-
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow',
-      mode: 'no-cors'
-    };
-
-    fetch("http://localhost:8080/posts/", requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-
-    // console.log(JSON.stringify(post));
-
-    // let res = await fetch(`http://localhost:8080/posts`, {
-    //   method: 'POST',
-    //   mode: 'no-cors',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(post)
-    // })
-
-    // if (!res.ok) {
-    //   throw 'upsi'
-    // }
-    // const resData = await res.json()
-
-    // console.log(resData);
-    // return resData
+    sendPost(post);
 
   }
 
+  async function  sendPost(post: Posti) {
 
-  const [isloaded, setIsloaded] = useState(false);
+    try{
+
+      const res = await axios.post('http://localhost:8080/posts/', post);
+
+      if(res.status !== 201) throw 'Ha ocurrido un error, contacte con el administrador';
+
+    }catch(err: any){
+      throw 'Ha ocurrido un error, contacte con el administrador: ' + err;
+    }
+    setIsSaved(!isSaved);
+  }
 
 
   useEffect(() => {
@@ -83,19 +79,41 @@ export default function PostDetail() {
   return (
 
     <div className="flex-col bg-white shadow-lg rounded-lg mx-auto mt-[50px] max-w-sm md:max-w-4xl ">
+      {!isSaved ?
 
-      <SunEditorComponent
-        value={data}
+      <div>
+
+        <div className='my-5 w-full border-2 h-96'>
+        <label key='title' className='mr-3 text-2xl'>Título</label>
+        <input id='title' type="text" className='border-2 rounded border-gray-200 w-full' onChange={(e) => setTitle(e.target.value)} value={title}></input>
+
+
+        <TagsDropdown selectedTags={selectedTags} setSelectedTags={setSelectedTags}/>
+        
+
+        </div>
+
+        
+
+
+        <SunEditorComponent
+        value={content}
         isloaded={isloaded}
-        setData={setData}
-      />
+        setData={setcontent}
+        />
 
-
-      <button className="group my-5 relative h-12 w-48 overflow-hidden rounded-lg bg-white text-lg shadow"
+        <button className="group my-5 relative h-12 w-48 overflow-hidden rounded-lg bg-white text-lg shadow"
         onClick={save}>
         <div className="absolute inset-0 w-3 bg-indigo-400 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
         <span className="relative text-black group-hover:text-white">Guardar  🤓</span>
-      </button>
+        </button>
+
+      </div>
+      :
+      <Saved 
+      name={user?.name} 
+      />
+      }
 
 
     </div>

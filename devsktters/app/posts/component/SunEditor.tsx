@@ -2,8 +2,6 @@
 import dynamic from "next/dynamic";
 import 'suneditor/dist/css/suneditor.min.css';
 
-import config from "./sunEditorConf";
-
 const SunEditor = dynamic(() => import("suneditor-react"), {ssr: false});
 
 import CodeMirror from "codemirror";
@@ -19,8 +17,6 @@ const SunEditorComponent = ({value, isloaded, setData} : any) => {
 
     useEffect(() => {
 
-
-
     }, [])
 
     const onChange = (dataPost: any) => {
@@ -29,9 +25,7 @@ const SunEditorComponent = ({value, isloaded, setData} : any) => {
 
     }
 
-
     return(
- 
         <>
             {isloaded 
             ?
@@ -71,7 +65,6 @@ const SunEditorComponent = ({value, isloaded, setData} : any) => {
                         "h5",
                         "h6"
                     ],
-                    
                     "imageFileInput": false,
                     "videoFileInput": false,
                     "audioUrlInput": false,
@@ -135,15 +128,10 @@ const SunEditorComponent = ({value, isloaded, setData} : any) => {
                             "showBlocks",
                             "preview",
                             "print",
-                            "save",
-                            "template"
                         ]
                     ],
                     "codeMirror": CodeMirror
                 }}
-
-                
-
             />
             
             </>
